@@ -45,4 +45,9 @@ public class Track {
     public void setAutorID(String autorID) {
         AutorID = autorID;
     }
+
+    @Override
+    public String toString() {
+        return this.Name;
+    }
 }

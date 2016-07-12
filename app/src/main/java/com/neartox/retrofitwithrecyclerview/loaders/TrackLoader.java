@@ -28,10 +28,12 @@ public class TrackLoader extends AsyncTask<Void, Void, Void> {
     public static class Contributor {
         public final String login;
         public final int id;
+        public final String avatar_url;
 
-        public Contributor(String login, int id) {
+        public Contributor(String login, int id, String avatar_url) {
             this.login = login;
             this.id = id;
+            this.avatar_url = avatar_url;
         }
     }
 
@@ -68,7 +70,7 @@ public class TrackLoader extends AsyncTask<Void, Void, Void> {
         }
         if(contributors != null) {
             for (Contributor contributor : contributors) {
-                list.add(new Track("1", contributor.login, "1", String.valueOf(contributor.id)));
+                list.add(new Track("1", contributor.login, contributor.avatar_url, String.valueOf(contributor.id)));
                 //System.out.println(contributor.login + " (" + contributor.contributions + ")");
             }
         }

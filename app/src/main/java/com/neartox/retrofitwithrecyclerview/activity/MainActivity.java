@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.neartox.retrofitwithrecyclerview.MyToast;
 import com.neartox.retrofitwithrecyclerview.R;
 import com.neartox.retrofitwithrecyclerview.beans.Track;
@@ -15,6 +16,7 @@ implements TrackFragment.OnListFragmentInteractionListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         //setContentView(R.layout.activity_main);
         if(mTrackF == null){
             mTrackF = new TrackFragment();
