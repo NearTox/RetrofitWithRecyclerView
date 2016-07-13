@@ -17,7 +17,7 @@ implements TrackFragment.OnListFragmentInteractionListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         if(mTrackF == null){
             mTrackF = new TrackFragment();
             FragmentTransaction ft=getSupportFragmentManager().beginTransaction();

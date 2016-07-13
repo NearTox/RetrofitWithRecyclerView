@@ -24,7 +24,6 @@ import java.util.List;
  * interface.
  */
 public class TrackFragment extends Fragment {
-    public List<Track> ITEMS = new ArrayList<Track>();
     public MyTrackRecyclerViewAdapter mMyTrackRecyclerViewAdapter;
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -73,11 +72,16 @@ public class TrackFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             if(mMyTrackRecyclerViewAdapter == null){
-                mMyTrackRecyclerViewAdapter = new MyTrackRecyclerViewAdapter(ITEMS, mListener);
+                mMyTrackRecyclerViewAdapter = new MyTrackRecyclerViewAdapter(mListener);
                 TrackLoader loader = new TrackLoader(mMyTrackRecyclerViewAdapter);
                 loader.execute();
+                recyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
+            }else{
+                recyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
+                if(mMyTrackRecyclerViewAdapter.mValues.size()!=0) {
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                }
             }
-            recyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
         }
         return view;
     }

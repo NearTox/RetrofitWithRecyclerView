@@ -12,6 +12,7 @@ import com.neartox.retrofitwithrecyclerview.R;
 import com.neartox.retrofitwithrecyclerview.beans.Track;
 import com.neartox.retrofitwithrecyclerview.fragment.TrackFragment.OnListFragmentInteractionListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,11 +22,10 @@ import java.util.List;
  */
 public class MyTrackRecyclerViewAdapter extends RecyclerView.Adapter<MyTrackRecyclerViewAdapter.ViewHolder> {
 
-    public List<Track> mValues;
+    public List<Track> mValues = new ArrayList<Track>();
     private final OnListFragmentInteractionListener mListener;
 
-    public MyTrackRecyclerViewAdapter(List<Track> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public MyTrackRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
     }
 
