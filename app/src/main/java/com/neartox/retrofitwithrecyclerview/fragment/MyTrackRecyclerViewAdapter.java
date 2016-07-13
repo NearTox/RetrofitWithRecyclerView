@@ -41,8 +41,7 @@ public class MyTrackRecyclerViewAdapter extends RecyclerView.Adapter<MyTrackRecy
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).AutorName);
         holder.mContentView.setText(mValues.get(position).Name);
-        Uri uri = Uri.parse(mValues.get(position).AutorID);
-        holder.mImage.setImageURI(uri);
+        holder.mImage.setImageURI(Uri.parse(mValues.get(position).AutorID));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

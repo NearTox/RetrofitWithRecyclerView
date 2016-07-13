@@ -22,6 +22,7 @@ implements TrackFragment.OnListFragmentInteractionListener{
             mTrackF = new TrackFragment();
             FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
             ft.replace(android.R.id.content,mTrackF);
+            //ft.add(R.id.contrainer, mTrackF);
             ft.commit();
         }
     }
