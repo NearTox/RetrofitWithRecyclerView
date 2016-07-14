@@ -93,6 +93,29 @@ public class TrackInfoFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(final Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(ARG_USERNAME,  UserName);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            //probably orientation change
+            UserName = savedInstanceState.getString(ARG_USERNAME);
+        } else {
+            if (UserName != null) {
+                //returning from backstack, data is fine, do nothing
+            } else {
+                //newly created, compute data
+                UserName = "JakeWharton";
+            }
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
