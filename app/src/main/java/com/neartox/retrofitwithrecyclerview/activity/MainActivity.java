@@ -11,17 +11,18 @@ import com.neartox.retrofitwithrecyclerview.beans.Track;
 import com.neartox.retrofitwithrecyclerview.fragment.TrackFragment;
 
 public class MainActivity extends AppCompatActivity
-implements TrackFragment.OnListFragmentInteractionListener{
+implements TrackFragment.OnListFragmentInteractionListener {
     TrackFragment mTrackF;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
-        if(mTrackF == null){
+        if (mTrackF == null) {
             mTrackF = new TrackFragment();
-            FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-            ft.replace(android.R.id.content,mTrackF);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(android.R.id.content, mTrackF);
             //ft.add(R.id.contrainer, mTrackF);
             ft.commit();
         }

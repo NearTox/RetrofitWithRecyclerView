@@ -71,14 +71,14 @@ public class TrackFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            if(mMyTrackRecyclerViewAdapter == null){
+            if (mMyTrackRecyclerViewAdapter == null) {
                 mMyTrackRecyclerViewAdapter = new MyTrackRecyclerViewAdapter(mListener);
                 TrackLoader loader = new TrackLoader(mMyTrackRecyclerViewAdapter);
                 loader.execute();
                 recyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
-            }else{
+            } else {
                 recyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
-                if(mMyTrackRecyclerViewAdapter.mValues.size()!=0) {
+                if (mMyTrackRecyclerViewAdapter.mValues.size() != 0) {
                     recyclerView.getAdapter().notifyDataSetChanged();
                 }
             }
@@ -109,7 +109,7 @@ public class TrackFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

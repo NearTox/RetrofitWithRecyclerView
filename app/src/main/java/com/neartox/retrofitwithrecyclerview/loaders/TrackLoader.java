@@ -38,10 +38,12 @@ public class TrackLoader extends AsyncTask<Void, Void, Void> {
     }
 
     public interface GitHub {
-        @GET("/repos/{owner}/{repo}/contributors")
+        //@GET("/repos/{owner}/{repo}/contributors")
+        @GET("/users/{owner}/followers")
         Call<List<Contributor>> contributors(
-                @Path("owner") String owner,
-                @Path("repo") String repo);
+                @Path("owner") String owner/*,
+                @Path("repo") String repo*/
+        );
     }
 
     @Override
@@ -59,7 +61,8 @@ public class TrackLoader extends AsyncTask<Void, Void, Void> {
         GitHub github = retrofit.create(GitHub.class);
 
         // Create a call instance for looking up Retrofit contributors.
-        Call<List<Contributor>> call = github.contributors("square", "retrofit");
+        //Call<List<Contributor>> call = github.contributors("square", "retrofit");
+        Call<List<Contributor>> call = github.contributors("JakeWharton");
 
         // Fetch and print a list of the contributors to the library.
         List<Contributor> contributors = null;
