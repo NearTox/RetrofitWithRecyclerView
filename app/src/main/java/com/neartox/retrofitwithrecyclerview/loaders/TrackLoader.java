@@ -38,8 +38,8 @@ public class TrackLoader extends AsyncTask<Void, Void, Void> {
     }
 
     public interface GitHub {
-        //@GET("/repos/{owner}/{repo}/contributors")
-        @GET("/users/{owner}/followers")
+        //@GET("/repos/{owner}/{repo}/contributors?per_page=100")
+        @GET("/users/{owner}/followers?per_page=50")
         Call<List<Contributor>> contributors(
                 @Path("owner") String owner/*,
                 @Path("repo") String repo*/

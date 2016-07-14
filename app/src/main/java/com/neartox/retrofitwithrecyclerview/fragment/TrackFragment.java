@@ -14,9 +14,6 @@ import com.neartox.retrofitwithrecyclerview.R;
 import com.neartox.retrofitwithrecyclerview.beans.Track;
 import com.neartox.retrofitwithrecyclerview.loaders.TrackLoader;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -24,6 +21,8 @@ import java.util.List;
  * interface.
  */
 public class TrackFragment extends Fragment {
+    private RecyclerView mRecyclerView;
+
     public MyTrackRecyclerViewAdapter mMyTrackRecyclerViewAdapter;
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -51,7 +50,6 @@ public class TrackFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -65,27 +63,26 @@ public class TrackFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            mRecyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+                mRecyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             if (mMyTrackRecyclerViewAdapter == null) {
                 mMyTrackRecyclerViewAdapter = new MyTrackRecyclerViewAdapter(mListener);
                 TrackLoader loader = new TrackLoader(mMyTrackRecyclerViewAdapter);
                 loader.execute();
-                recyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
+                mRecyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
             } else {
-                recyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
+                mRecyclerView.setAdapter(mMyTrackRecyclerViewAdapter);
                 if (mMyTrackRecyclerViewAdapter.mValues.size() != 0) {
-                    recyclerView.getAdapter().notifyDataSetChanged();
+                    mMyTrackRecyclerViewAdapter.notifyDataSetChanged();
                 }
             }
         }
         return view;
     }
-
 
     @Override
     public void onAttach(Context context) {

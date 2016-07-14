@@ -19,14 +19,14 @@ implements TrackFragment.OnListFragmentInteractionListener {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
-        if (mTrackF == null) {
+        if (null == savedInstanceState) {
             mTrackF = new TrackFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(android.R.id.content, mTrackF);
-            //ft.add(R.id.contrainer, mTrackF);
-            ft.commit();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(android.R.id.content, mTrackF);
+            fragmentTransaction.commit();
         }
     }
+
 
     @Override
     public void onListFragmentInteraction(Track item) {
