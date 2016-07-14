@@ -68,6 +68,7 @@ public class TrackInfoFragment extends Fragment {
         mFollowers = (TextView) view.findViewById(R.id.track_followers_);
         mFollowersTxt = (TextView) view.findViewById(R.id.track_followers_txt);
         if(UserName != null){
+            mUsername.setText(UserName);
             UserLoader loader = new UserLoader(this);
             loader.execute();
         }
