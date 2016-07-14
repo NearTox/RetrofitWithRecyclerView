@@ -60,6 +60,7 @@ public class TrackFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_track_list, container, false);
 
+        getActivity().getSupportFragmentManager().popBackStack();
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();

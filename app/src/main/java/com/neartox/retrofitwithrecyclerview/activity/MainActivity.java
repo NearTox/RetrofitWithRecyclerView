@@ -1,5 +1,6 @@
 package com.neartox.retrofitwithrecyclerview.activity;
 
+import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,9 +10,10 @@ import com.neartox.retrofitwithrecyclerview.MyToast;
 import com.neartox.retrofitwithrecyclerview.R;
 import com.neartox.retrofitwithrecyclerview.beans.Track;
 import com.neartox.retrofitwithrecyclerview.fragment.TrackFragment;
+import com.neartox.retrofitwithrecyclerview.fragment.TrackInfoFragment;
 
 public class MainActivity extends AppCompatActivity
-implements TrackFragment.OnListFragmentInteractionListener {
+implements TrackFragment.OnListFragmentInteractionListener, TrackInfoFragment.OnFragmentInteractionListener {
     TrackFragment mTrackF;
 
     @Override
@@ -30,6 +32,16 @@ implements TrackFragment.OnListFragmentInteractionListener {
 
     @Override
     public void onListFragmentInteraction(Track item) {
+        FragmentTransaction ftrans = getSupportFragmentManager().beginTransaction();
+        ftrans.replace(android.R.id.content, TrackInfoFragment.newInstance(item.Name));
+        ftrans.addToBackStack(null);
+        ftrans.commit();
+
         MyToast.ShowToast(item.toString(), this);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        MyToast.ShowToast(uri.toString(), this);
     }
 }

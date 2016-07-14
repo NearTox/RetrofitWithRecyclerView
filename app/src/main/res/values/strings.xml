@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RetrofitWithRecyclerView</string>
+    <string name="followers_txt">followers</string>
 </resources>
