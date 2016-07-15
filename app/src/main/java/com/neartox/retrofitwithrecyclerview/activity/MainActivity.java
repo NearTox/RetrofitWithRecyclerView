@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.neartox.retrofitwithrecyclerview.MyToast;
@@ -29,6 +31,24 @@ implements TrackFragment.OnListFragmentInteractionListener, TrackInfoFragment.On
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        /*return */super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        /*return */super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if(id ==R.id.main_menu_op1){
+            MyToast.ShowToast(item.toString(),this);
+        }else{
+            MyToast.ShowToast(item.toString(),this);
+        }
+        return true;
+    }
 
     @Override
     public void onListFragmentInteraction(Track item) {
