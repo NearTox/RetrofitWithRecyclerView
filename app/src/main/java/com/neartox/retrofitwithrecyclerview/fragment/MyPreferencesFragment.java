@@ -1,24 +1,15 @@
 package com.neartox.retrofitwithrecyclerview.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.preference.PreferenceFragmentCompat;
 
 import com.neartox.retrofitwithrecyclerview.R;
 
-public class MyPreferencesFragment extends PreferenceFragment {
-    public MyPreferencesFragment() {
-        // Required empty public constructor
-    }
-
-
+public class MyPreferencesFragment extends PreferenceFragmentCompat {
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreatePreferences(Bundle bundle, String s) {
+        //super.onCreatePreferences(bundle, s);
+        addPreferencesFromResource(R.xml.preferences_xml);
+
     }
 }
