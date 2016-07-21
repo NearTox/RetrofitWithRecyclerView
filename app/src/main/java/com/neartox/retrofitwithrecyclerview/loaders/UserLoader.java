@@ -61,10 +61,10 @@ public class UserLoader extends AsyncTask<Void, Void, Void> {
 
         // Create a call instance for looking up Retrofit contributors.
         Call<Contributor> call;
-        if(mInfo!=null) {
-            call= github.user(mInfo.UserName);
-        }else{
-            call= github.user("JakeWharton");
+        if (mInfo != null) {
+            call = github.user(mInfo.UserName);
+        } else {
+            call = github.user("JakeWharton");
         }
 
         // Fetch and print a list of the contributors to the library.

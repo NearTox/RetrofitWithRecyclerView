@@ -30,7 +30,7 @@ public class TrackInfoFragment extends Fragment {
     public TextView mFollowersTxt;
     public TextView mFollowers;
 
-        // TODO: Rename and change types of parameters
+    // TODO: Rename and change types of parameters
     public String UserName;
 
     private OnFragmentInteractionListener mListener;
@@ -61,13 +61,13 @@ public class TrackInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_track_info, container, false);
-        mImage= (SimpleDraweeView) view.findViewById(R.id.track_img_big);
+        mImage = (SimpleDraweeView) view.findViewById(R.id.track_img_big);
         mName = (TextView) view.findViewById(R.id.track_name_);
         mUsername = (TextView) view.findViewById(R.id.track_username_);
         mLocation = (TextView) view.findViewById(R.id.track_location);
         mFollowers = (TextView) view.findViewById(R.id.track_followers_);
         mFollowersTxt = (TextView) view.findViewById(R.id.track_followers_txt);
-        if(UserName != null){
+        if (UserName != null) {
             mUsername.setText(UserName);
             UserLoader loader = new UserLoader(this);
             loader.execute();
@@ -96,7 +96,7 @@ public class TrackInfoFragment extends Fragment {
     @Override
     public void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(ARG_USERNAME,  UserName);
+        outState.putString(ARG_USERNAME, UserName);
     }
 
     @Override
