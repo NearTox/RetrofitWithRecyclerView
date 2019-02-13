@@ -1,16 +1,17 @@
 package com.neartox.retrofitwithrecyclerview.fragment;
 
+
 import android.net.Uri;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.neartox.retrofitwithrecyclerview.R;
 import com.neartox.retrofitwithrecyclerview.beans.Track;
-import com.neartox.retrofitwithrecyclerview.fragment.TrackFragment.OnListFragmentInteractionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +24,9 @@ import java.util.List;
 public class MyTrackRecyclerViewAdapter extends RecyclerView.Adapter<MyTrackRecyclerViewAdapter.ViewHolder> {
 
     public List<Track> mValues = new ArrayList<Track>();
-    private final OnListFragmentInteractionListener mListener;
+    private final TrackFragment.OnListFragmentInteractionListener mListener;
 
-    public MyTrackRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
+    public MyTrackRecyclerViewAdapter(TrackFragment.OnListFragmentInteractionListener listener) {
         mListener = listener;
     }
 
