@@ -9,20 +9,61 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.neartox.retrofitwithrecyclerview.MyToast;
 import com.neartox.retrofitwithrecyclerview.R;
 import com.neartox.retrofitwithrecyclerview.beans.Track;
 import com.neartox.retrofitwithrecyclerview.fragment.TrackFragment;
 import com.neartox.retrofitwithrecyclerview.fragment.TrackInfoFragment;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity
     implements TrackFragment.OnListFragmentInteractionListener, TrackInfoFragment.OnFragmentInteractionListener {
   TrackFragment mTrackF;
 
+  static String cookies = "";
+
+  public class UserAgentInterceptor implements Interceptor {
+    private final String userAgent;
+
+    public UserAgentInterceptor(String userAgent) {
+      this.userAgent = userAgent;
+    }
+
+    @Override
+    public Response intercept(Interceptor.Chain chain) throws IOException {
+      Request originalRequest = chain.request();
+      Request requestWithUserAgent = originalRequest.newBuilder()
+          .header("User-Agent", userAgent)
+          .header("Cookie", MainActivity.cookies)
+          .build();
+      return chain.proceed(requestWithUserAgent);
+    }
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+
+    OkHttpClient okHttpClient = new OkHttpClient
+        .Builder()
+        .addNetworkInterceptor(new UserAgentInterceptor("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"))
+        .build();
+
+    ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
+        .newBuilder(this, okHttpClient)
+        .build();
+
+    Fresco.initialize(this, config);
+
     super.onCreate(savedInstanceState);
-    Fresco.initialize(this);
+
     setContentView(R.layout.activity_main);
     if(null == savedInstanceState) {
       mTrackF = new TrackFragment();
