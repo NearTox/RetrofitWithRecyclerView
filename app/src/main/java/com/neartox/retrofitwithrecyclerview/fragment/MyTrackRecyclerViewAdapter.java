@@ -71,9 +71,9 @@ public class MyTrackRecyclerViewAdapter extends RecyclerView.Adapter<MyTrackRecy
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.track_id);
-            mContentView = (TextView) view.findViewById(R.id.track_content);
-            mImage = (SimpleDraweeView) view.findViewById(R.id.track_img);
+            mIdView = view.findViewById(R.id.track_id);
+            mContentView = view.findViewById(R.id.track_content);
+            mImage = view.findViewById(R.id.track_img);
         }
 
         @Override

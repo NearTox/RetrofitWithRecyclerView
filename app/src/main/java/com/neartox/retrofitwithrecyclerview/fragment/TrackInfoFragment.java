@@ -62,12 +62,12 @@ public class TrackInfoFragment extends Fragment {
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_track_info, container, false);
-    mImage = (SimpleDraweeView) view.findViewById(R.id.track_img_big);
-    mName = (TextView) view.findViewById(R.id.track_name_);
-    mUsername = (TextView) view.findViewById(R.id.track_username_);
-    mLocation = (TextView) view.findViewById(R.id.track_location);
-    mFollowers = (TextView) view.findViewById(R.id.track_followers_);
-    mFollowersTxt = (TextView) view.findViewById(R.id.track_followers_txt);
+    mImage = view.findViewById(R.id.track_img_big);
+    mName = view.findViewById(R.id.track_name_);
+    mUsername = view.findViewById(R.id.track_username_);
+    mLocation = view.findViewById(R.id.track_location);
+    mFollowers = view.findViewById(R.id.track_followers_);
+    mFollowersTxt = view.findViewById(R.id.track_followers_txt);
     if(UserName != null) {
       mUsername.setText(UserName);
       UserLoader loader = new UserLoader(this);
